@@ -4,7 +4,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['run', 'jest']
 - name: '${_IMAGE}'
-  args: ['sonar-scanner', '-Dsonar.host.url=${_HOST}', '-Dsonar.login=${_LOGIN}', '-Dsonar.password=${_PASS}', '-Dsonar.sources=/workspace', '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.tests=.', 'Dsonar.test.inclusions=./**/*.js', '-Dsonar.typescript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME']
+  args: ['sonar-scanner', '-Dsonar.host.url=${_HOST}', '-Dsonar.login=${_LOGIN}', '-Dsonar.password=${_PASS}', '-Dsonar.sources=/workspace', '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.tests=/workspace/', '-Dsonar.test.inclusions=./**/*.js', '-Dsonar.typescript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ["build", "-t", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${COMMIT_SHA}", "."]
