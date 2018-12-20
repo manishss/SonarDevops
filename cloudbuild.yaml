@@ -2,7 +2,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['install']
 - name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'jest']
+  args: ['run', 'test']
 - name: '${_IMAGE}'
   args: ['sonar-scanner', '-Dsonar.host.url=${_HOST}', '-Dsonar.login=${_LOGIN}', '-Dsonar.password=${_PASS}', '-Dsonar.sources=/workspace', '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.tests=/workspace/', '-Dsonar.test.inclusions=./**/*.js', '-Dsonar.typescript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME']
 
