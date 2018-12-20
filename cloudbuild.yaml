@@ -1,7 +1,9 @@
 steps:
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['run', 'jest']
 - name: '${_IMAGE}'
-  args: ['npm', 'install']
-  args: ['npm', 'run', 'jest']
   args: ['sonar-scanner', '-Dsonar.host.url=${_HOST}', '-Dsonar.login=${_LOGIN}', '-Dsonar.password=${_PASS}', '-Dsonar.sources=/workspace','-Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME']
 
 - name: 'gcr.io/cloud-builders/docker'
