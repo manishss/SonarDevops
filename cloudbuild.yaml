@@ -7,7 +7,7 @@ steps:
 - name: '${_IMAGE}'
   args: ['sonar-scanner', '-Dsonar.host.url=${_HOST}', '-Dsonar.login=${_LOGIN}', '-Dsonar.password=${_PASS}', '-Dsonar.sources=/workspace', '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.tests=/workspace/', '-Dsonar.test.inclusions=./**/*.js', '-Dsonar.typescript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME']
 - name: docker.io/nimbus2005/sonar-qgate:latest
-  args: ['bash', '/sonarqube-Qgate.sh']
+  args: ['bash', '/sonarqube-Qgate.sh', '${_API}', '${_HOST}', '${_SONAR_KEY}']
 - name: 'gcr.io/cloud-builders/docker'
   args: ["build", "-t", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${COMMIT_SHA}", "."]
 - name: 'gcr.io/cloud-builders/docker'
