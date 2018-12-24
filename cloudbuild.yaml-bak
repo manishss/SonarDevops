@@ -1,3 +1,4 @@
+
 steps:
 - name: '${_IMAGE}'
   args: ['sonar-scanner', '-Dsonar.host.url=${_HOST}', '-Dsonar.login=${_LOGIN}', '-Dsonar.password=${_PASS}', '-Dsonar.sources=/workspace','-Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME']
