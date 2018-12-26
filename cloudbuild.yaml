@@ -8,7 +8,7 @@ steps:
 - name: docker.io/nimbus2005/sonar-qgate:latest
   args: ['bash', '/sonarqube-Qgate.sh', '${_API}', '${_HOST}', '${_SONAR_KEY}']
 - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'sh'
+  entrypoint: 'sh'
     args:
       - '-c'
       - |
