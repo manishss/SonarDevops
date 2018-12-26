@@ -1,3 +1,4 @@
+# Running tests and sonarqube static analysis.
 steps:
 - name: 'gcr.io/cloud-builders/npm'
   entrypoint: 'sh'
@@ -7,16 +8,8 @@ steps:
       npm install
       npm run test
       npm install -g sonarqube-scanner
-      sonar-scanner -Dsonar.host.url=${_HOST} -Dsonar.login=${_LOGIN} -Dsonar.password=${_PASS} -Dsonar.sources=/workspace -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.tests=/workspace/ -Dsonar.test.inclusions=./**/*.js -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info -Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME    
-  
-# NPM test with coverage
-- name: 'gcr.io/cloud-builders/npm'
-  args: ['run', 'test']
-
-#Running sonarqube static analysis
-- name: '${_IMAGE}'
-  args: ['sonar-scanner', '-Dsonar.host.url=${_HOST}', '-Dsonar.login=${_LOGIN}', '-Dsonar.password=${_PASS}', '-Dsonar.sources=/workspace', '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.tests=/workspace/', '-Dsonar.test.inclusions=./**/*.js', '-Dsonar.typescript.lcov.reportPaths=coverage/lcov.info', '-Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME']
-
+      sonar-scanner -Dsonar.host.url=${_HOST} -Dsonar.login=${_LOGIN} -Dsonar.password=${_PASS} -Dsonar.sources=/workspace -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info -Dsonar.tests=/workspace/ -Dsonar.test.inclusions=./**/*.js -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info -Dsonar.projectName=${_DEVOPS}-$BRANCH_NAME
+        
 #Getting the sonarqube Quality gate status(if failed build will stop)
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'sh'
