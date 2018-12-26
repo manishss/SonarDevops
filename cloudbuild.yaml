@@ -2,11 +2,11 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   entrypoint: 'sh'
   args:
-    - 'npm'
+    - '-c'
     - | 
-      install
-      run test
-      install -g sonarqube-scanner      
+      npm install
+      npm run test
+      npm install -g sonarqube-scanner      
   
 # NPM test with coverage
 - name: 'gcr.io/cloud-builders/npm'
