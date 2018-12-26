@@ -1,4 +1,3 @@
-
 steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['install']
@@ -13,7 +12,7 @@ steps:
     args:
       - '-c'
       - |
-        gsutil cp gs://${PROJECT_ID}-sonarqube-Qgate.sh sonarqube-Qgate.sh
+        gsutil cp gs://artifacts.${PROJECT_ID}.appspot.com/sonarqube-Qgate.sh sonarqube-Qgate.sh
         sh sonarqube-Qgate.sh ${_API} ${_HOST} ${_SONAR_KEY}
 
 - name: 'gcr.io/cloud-builders/docker'
