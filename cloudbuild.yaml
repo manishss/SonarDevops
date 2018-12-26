@@ -2,7 +2,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   entrypoint: 'sh'
   args:
-    - '-c'
+    - 'npm'
     - | 
       install
       run test
