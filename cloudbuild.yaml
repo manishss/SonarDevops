@@ -9,11 +9,11 @@ steps:
   args: ['bash', '/sonarqube-Qgate.sh', '${_API}', '${_HOST}', '${_SONAR_KEY}']
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'sh'
-    args:
-      - '-c'
-      - |
-        gsutil cp gs://artifacts.${PROJECT_ID}.appspot.com/sonarqube-Qgate.sh sonarqube-Qgate.sh
-        sh sonarqube-Qgate.sh ${_API} ${_HOST} ${_SONAR_KEY}
+  args:
+    - '-c'
+    - |
+      gsutil cp gs://artifacts.${PROJECT_ID}.appspot.com/sonarqube-Qgate.sh sonarqube-Qgate.sh
+      sh sonarqube-Qgate.sh ${_API} ${_HOST} ${_SONAR_KEY}
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ["build", "-t", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${COMMIT_SHA}", "."]
