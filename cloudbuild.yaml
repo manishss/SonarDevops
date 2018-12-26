@@ -13,6 +13,7 @@ steps:
     - '-c'
     - |
       gsutil cp gs://artifacts.${PROJECT_ID}.appspot.com/sonarqube-Qgate.sh sonarqube-Qgate.sh
+      apt-get update && apt-get install jq -y
       sh sonarqube-Qgate.sh ${_API} ${_HOST} ${_SONAR_KEY}
 
 - name: 'gcr.io/cloud-builders/docker'
