@@ -33,7 +33,7 @@ steps:
   args:
   - set
   - image
-  - 'deployment/devops-3'
+  - 'deployment/devops-1'
   - 'devops=gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${COMMIT_SHA}'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
